@@ -18,6 +18,18 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="publicitem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="gogame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="initialize.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="action.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="head.h">
