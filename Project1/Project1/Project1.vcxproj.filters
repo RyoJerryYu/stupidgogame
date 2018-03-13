@@ -30,6 +30,12 @@
     <ClCompile Include="goapi.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="phase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="gorengo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="head.h">

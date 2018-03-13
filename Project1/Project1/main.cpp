@@ -1,16 +1,22 @@
 #include "head.h"
 using namespace gogame;
+
 int main() {
 	initialize();
 	point activep;
-	while (!finish_flag_) {
-		for (int i = 1; i <= playernum_; i++) {
-			if (!finish_flag_) {
-				activep=input();
+	while (!players.allpass()) {
+		for (int tplayer = 1; tplayer <= playernum_; tplayer++) {
+			if (!players[tplayer].pass) {
+				display();
+				activep=input(tplayer);
 			}
-			if (finish_flag_)break;
-			poson(i, activep);
+			if (players[tplayer].pass) {
+				passinfo(tplayer);
+				continue;
+			}
+			phase(tplayer, activep);
 		}
 	}
+	display();
 	return 0;
 }

@@ -15,9 +15,10 @@ int initialize() {
 		air[i][col_ - 1]--;
 	}
 	players.clear();
-	players.push_back(player());//first of players is null
-	for (int i = 0; i < playernum_; i++) {
-		players.push_back(player());//size of players equal to playernum_+1
+	const wchar_t outstr[3] = { L'\0',L'¡ð',L'¡ñ' };
+	players.push_back(player("NULL",outstr[0],true));//first of players is null
+	for (int i = 1; i <= playernum_; i++) {
+		players.push_back(player("player"+std::to_string(i),outstr[i],false));//size of players equal to playernum_+1
 	}
 	return 0;
 }

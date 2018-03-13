@@ -2,14 +2,23 @@
 #define HEAD_H_
 
 #include <vector>
+#include <string>
 extern bool finish_flag_;
 extern int row_, col_;
 extern int playernum_;
 
 namespace gogame {
-	class player {	};
+	struct player {
+		std::string name;
+		wchar_t display;
+		bool pass = false;
+		player(std::string s,wchar_t c,bool p) :name(s),display(c),pass(p) {};
+	};
 
-	class playerset :public std::vector<player> {};
+	class playerset :public std::vector<player> {
+	public:
+		bool allpass();
+	};
 
 	struct point {
 		int row, col;
@@ -29,10 +38,19 @@ namespace gogame {
 		std::vector<int>& operator[](int);
 	};
 
+	struct predicate {
+		virtual bool operator()(point) {
+			return true;
+		}
+	};
+
 	pointset around(point);
+	pointset around(point,predicate);
 	pointset linked(point);
-	int poson(int,point);
+	pointset linked(point,predicate);
+	int placeon(int,point);
 	int remove(point);
+	int remove(pointset);
 }
 
 extern gogame::pool board;
@@ -40,5 +58,8 @@ extern gogame::pool air;
 extern gogame::playerset players;
 
 int initialize();
-gogame::point input();
+gogame::point input(int);
+int phase(const int&,gogame::point&);
+int display();
+int passinfo(int);
 #endif //HEAD_H_
