@@ -6,11 +6,11 @@ int initialize() {
 	playernum_ = 2;
 	board = pool(0);
 	air = pool(4);
-	for (int i = 0; i < col_; i--) {
+	for (int i = 0; i < col_; i++) {
 		air[0][i]--;
 		air[row_ - 1][i]--;
 	}
-	for (int i = 0; i < row_; i--) {
+	for (int i = 0; i < row_; i++) {
 		air[i][0]--;
 		air[i][col_ - 1]--;
 	}

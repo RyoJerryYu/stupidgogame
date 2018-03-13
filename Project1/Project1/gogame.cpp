@@ -2,7 +2,7 @@
 int& gogame::point::board() { 
 	return ::board[*this]; 
 };
-int& gogame::point::air() { 
+int& gogame::point::air() {
 	return ::air[*this]; 
 };
 gogame::player gogame::point::player() {
@@ -12,10 +12,10 @@ gogame::player gogame::point::player() {
 gogame::pool::pool(int v, int r, int c) {
 	Pool = std::vector<std::vector<int> >(r, std::vector<int>(c, v));
 };
-int& gogame::pool::operator[](point p) { 
+int& gogame::pool::operator[](point p) {
 	return Pool[p.row][p.col]; 
 };
-std::vector<int>& gogame::pool::operator[](int i) { 
+std::vector<int>& gogame::pool::operator[](int i) {
 	return Pool[i]; 
 };
 
@@ -54,4 +54,19 @@ gogame::pointset gogame::linked(point p) {
 		}
 	}
 	return res;
+}
+
+int gogame::poson(int player, point posi) {
+	board[posi] = player;
+	for (point x : around(posi)) {
+		air[x]--;
+	}
+	return 0;
+}
+int gogame::remove(point posi) {
+	board[posi] = 0;
+	for (point x : around(posi)) {
+		air[x]--;
+	}
+	return 0;
 }

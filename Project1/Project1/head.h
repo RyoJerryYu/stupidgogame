@@ -31,6 +31,8 @@ namespace gogame {
 
 	pointset around(point);
 	pointset linked(point);
+	int poson(int,point);
+	int remove(point);
 }
 
 extern gogame::pool board;
@@ -38,6 +40,5 @@ extern gogame::pool air;
 extern gogame::playerset players;
 
 int initialize();
-class playon;
-class remove;
+gogame::point input();
 #endif //HEAD_H_

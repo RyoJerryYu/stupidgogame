@@ -2,14 +2,14 @@
 using namespace gogame;
 int main() {
 	initialize();
-	point active;
+	point activep;
 	while (!finish_flag_) {
 		for (int i = 1; i <= playernum_; i++) {
 			if (!finish_flag_) {
-				active=input();
+				activep=input();
 			}
 			if (finish_flag_)break;
-			playon(i)(active);
+			poson(i, activep);
 		}
 	}
 	return 0;

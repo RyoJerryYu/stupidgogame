@@ -115,7 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="action.cpp" />
+    <ClCompile Include="goapi.cpp" />
     <ClCompile Include="gogame.cpp" />
     <ClCompile Include="initialize.cpp" />
     <ClCompile Include="main.cpp" />
