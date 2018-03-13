@@ -18,5 +18,6 @@ int main() {
 		}
 	}
 	display();
+	killdead();
 	return 0;
 }

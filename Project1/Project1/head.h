@@ -62,4 +62,5 @@ gogame::point input(int);
 int phase(const int&,gogame::point&);
 int display();
 int passinfo(int);
+int killdead();
 #endif //HEAD_H_
