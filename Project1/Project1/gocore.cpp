@@ -1,5 +1,5 @@
 #include "head.h"
-bool gogame::playerset::allpass() {
+bool gocore::playerset::allpass() {
 	int allpass = 1;
 	for (player i : *this) {
 		allpass *= i.pass;
@@ -7,27 +7,27 @@ bool gogame::playerset::allpass() {
 	return (bool)allpass;
 }
 
-int& gogame::point::board() { 
+int& gocore::point::board() { 
 	return ::board[*this]; 
 };
-int& gogame::point::air() {
+int& gocore::point::air() {
 	return ::air[*this]; 
 };
-gogame::player gogame::point::player() {
+gocore::player gocore::point::player() {
 	return players[board()];
 }
 
-gogame::pool::pool(int v, int r, int c) {
+gocore::pool::pool(int v, int r, int c) {
 	Pool = std::vector<std::vector<int> >(r, std::vector<int>(c, v));
 };
-int& gogame::pool::operator[](point p) {
+int& gocore::pool::operator[](point p) {
 	return Pool[p.row][p.col]; 
 };
-std::vector<int>& gogame::pool::operator[](int i) {
+std::vector<int>& gocore::pool::operator[](int i) {
 	return Pool[i]; 
 };
 
-gogame::pointset gogame::around(point p) {
+gocore::pointset gocore::around(point p) {
 	pointset set;
 	if (p.row > 0) set.push_back(point(p.row - 1, p.col));
 	if (p.col > 0) set.push_back(point(p.row, p.col - 1));
@@ -35,7 +35,7 @@ gogame::pointset gogame::around(point p) {
 	if (p.col < col_ - 1) set.push_back(point(p.row, p.col + 1));
 	return set;
 };
-gogame::pointset gogame::around(point p, predicate cmp) {
+gocore::pointset gocore::around(point p, predicate&& cmp) {
 	pointset set;
 	if (p.row > 0) {
 		point a(p.row - 1, p.col);
@@ -56,7 +56,7 @@ gogame::pointset gogame::around(point p, predicate cmp) {
 	return set;
 }
 
-gogame::pointset gogame::linked(point p) {
+gocore::pointset gocore::linked(point p) {
 	pool found;
 	pointset stark, res;
 	found[p] = 1;
@@ -75,7 +75,7 @@ gogame::pointset gogame::linked(point p) {
 	}
 	return res;
 }
-gogame::pointset gogame::linked(point p,predicate cmp) {
+gocore::pointset gocore::linked(point p,predicate&& cmp) {
 	pool found;
 	pointset stark, res;
 	if(!cmp(p)){
@@ -103,14 +103,14 @@ gogame::pointset gogame::linked(point p,predicate cmp) {
 	return res;
 }
 
-int gogame::placeon(int player, point posi) {
+int gocore::placeon(int player, point posi) {
 	board[posi] = player;
 	for (point x : around(posi)) {
 		air[x]--;
 	}
 	return 0;
 }
-int gogame::remove(point posi) {
+int gocore::remove(point posi) {
 	if (board[posi] == 0)return 0;
 	board[posi] = 0;
 	for (point x : around(posi)) {
@@ -118,7 +118,7 @@ int gogame::remove(point posi) {
 	}
 	return 0;
 }
-int gogame::remove(pointset posis) {
+int gocore::remove(pointset posis) {
 	for (const point& x : posis) {
 		remove(x);
 	}

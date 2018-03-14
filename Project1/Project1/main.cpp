@@ -1,5 +1,5 @@
 #include "head.h"
-using namespace gogame;
+using namespace gocore;
 
 int main() {
 	initialize();
@@ -14,10 +14,12 @@ int main() {
 				passinfo(tplayer);
 				continue;
 			}
-			phase(tplayer, activep);
+			mainphase(tplayer, activep);
 		}
 	}
-	display();
 	killdead();
+	display();
+	countscore();
+	displayscore();
 	return 0;
 }

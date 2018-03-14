@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-using namespace gogame;
+#include <cstdlib>
+using namespace gocore;
 point input(int tplayer) {
 	using std::cin;
 	using std::cout;
@@ -31,6 +32,7 @@ point input(int tplayer) {
 	return point(r, c);
 }
 int display() {
+	std::system("cls");
 	using std::cin;
 	using std::wcout;
 	using std::endl;
@@ -72,5 +74,12 @@ int display() {
 }
 int passinfo(int tplayer) {
 	std::cout << "Player: " << players[tplayer].name << " was passed!" << std::endl;
+	return 0;
+}
+int displayscore() {
+	for (int tplayer = 1; tplayer <= playernum_; tplayer++) {
+		std::cout << "Player: " << players[tplayer].name << "\t get score:" << players[tplayer].score << std::endl;
+	}
+	std::system("pause>nul");
 	return 0;
 }

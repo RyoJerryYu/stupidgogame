@@ -21,22 +21,19 @@
     <ClCompile Include="publicitem.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="gogame.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="initialize.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="goapi.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="phase.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="gorengo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ending.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="gocore.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mainphase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

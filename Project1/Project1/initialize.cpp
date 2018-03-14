@@ -1,7 +1,10 @@
 #include "head.h"
-using namespace gogame;
+#include <cstdlib>
+using namespace gocore;
 int initialize() {
-	finish_flag_ = false;
+	std::system("color 2f");
+	std::system("mode con cols=50 lines=25");
+	std::system("title stupid gogame");
 	row_ = 9, col_ = 9;
 	playernum_ = 2;
 	board = pool(0);

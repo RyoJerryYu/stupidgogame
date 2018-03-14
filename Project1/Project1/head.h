@@ -3,15 +3,15 @@
 
 #include <vector>
 #include <string>
-extern bool finish_flag_;
 extern int row_, col_;
 extern int playernum_;
 
-namespace gogame {
+namespace gocore {
 	struct player {
 		std::string name;
 		wchar_t display;
 		bool pass = false;
+		int score = 0;
 		player(std::string s,wchar_t c,bool p) :name(s),display(c),pass(p) {};
 	};
 
@@ -25,7 +25,7 @@ namespace gogame {
 		point(int r = 0, int c = 0) :row(r), col(c) {};
 		int& board();
 		int& air();
-		gogame::player player();
+		gocore::player player();
 	};
 
 	class pointset :public std::vector<point> {};
@@ -45,22 +45,24 @@ namespace gogame {
 	};
 
 	pointset around(point);
-	pointset around(point,predicate);
+	pointset around(point,predicate&&);
 	pointset linked(point);
-	pointset linked(point,predicate);
+	pointset linked(point,predicate&&);
 	int placeon(int,point);
 	int remove(point);
 	int remove(pointset);
 }
 
-extern gogame::pool board;
-extern gogame::pool air;
-extern gogame::playerset players;
+extern gocore::pool board;
+extern gocore::pool air;
+extern gocore::playerset players;
 
 int initialize();
-gogame::point input(int);
-int phase(const int&,gogame::point&);
+gocore::point input(int);
+int mainphase(const int&,gocore::point&);
 int display();
 int passinfo(int);
 int killdead();
+int countscore();
+int displayscore();
 #endif //HEAD_H_

@@ -1,11 +1,11 @@
 #include "head.h"
-using namespace gogame;
+using namespace gocore;
 struct captured :public predicate {
 	bool operator()(point x) {
 		return air[x] == 0;
 	}
 };
-int phase(const int& tplayer,point& activep) {
+int mainphase(const int& tplayer,point& activep) {
 	placeon(tplayer, activep);
 	pointset removemark;
 	for (point x : around(activep)) {

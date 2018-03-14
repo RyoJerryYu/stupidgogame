@@ -117,11 +117,10 @@
   <ItemGroup>
     <ClCompile Include="ending.cpp" />
     <ClCompile Include="goapi.cpp" />
-    <ClCompile Include="gogame.cpp" />
-    <ClCompile Include="gorengo.cpp" />
+    <ClCompile Include="gocore.cpp" />
     <ClCompile Include="initialize.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="phase.cpp" />
+    <ClCompile Include="mainphase.cpp" />
     <ClCompile Include="publicitem.cpp" />
   </ItemGroup>
   <ItemGroup>
