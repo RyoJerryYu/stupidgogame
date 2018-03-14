@@ -35,17 +35,39 @@ int killdead() {
 						if (found[ar] == 1||innermark[ar]==1)continue;
 						pointset innerair = linked(ar, isinner(p));
 						if (innerair.empty()) {//Not inner air comes here.
-							for (point y : linked(ar))found[y] = 1;//FOUND LOOP.2
+							for (point outer : linked(ar))found[outer] = 1;//FOUND of LOOP.2
 							continue;
 						}
 						//Only inner air could come here.
 						if (innerair.size() > 4)lifeflag += 2;
 						else lifeflag++;
-						for (point y : innerair)innermark[y] = 1;//FOUND LOOP.2
+						for (point inner : innerair)innermark[inner] = 1;//FOUND of LOOP.2
 					}
 				}
 				if (lifeflag < 2)deadset.insert(deadset.end(), linktop.begin(), linktop.end());
 			}
 	for (point p : deadset)board[p] = 0;
 	return 0;
+}
+int countscore() {
+	pool found;
+
+	for(int r=0;r<row_;r++)
+		for(int c=0;c<col_;c++)
+			if (board[r][c] != 0 && found[r][c] == 0) {//LOOP.1
+				point p(r, c);
+				found[p] = 1;
+				for (point x : linked(p)) {
+					found[x] = 1;//FOUND of LOOP.1
+					for (point ar : around(x, isair())) {//LOOP.2
+						if (found[ar] == 1)continue;
+						pointset innerair = linked(ar, isinner(p));
+						if (innerair.empty()) {
+							for (point outer : linked(ar))found[outer] = 1;//FOUND of LOOP.2
+							continue;
+						}
+						for (point inner : innerair)found[inner] = 1;//FOUND of LOOP.2
+					}
+				}
+			}
 }
